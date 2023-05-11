@@ -1,5 +1,11 @@
 import express from 'express'; // or const express = require('express') if you remove the "type" from package.json
+import mongodb_connect from './Database/db_connection.js';
+
+// variables declaring
 const app = express();
+
+// Connecting to Databse on mongodb
+mongodb_connect.call()
 
 app.get('/', (req, res) => { // First the path then the fallback function
     res.send('Hi mates!!')

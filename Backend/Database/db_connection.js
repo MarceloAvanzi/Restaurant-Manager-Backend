@@ -1,2 +1,15 @@
 import mongoose from 'mongoose';
-// mongoose.connect("mongodb://localhost:27017/RestaurantManagement"); //precisa instalar o mongosh e conectar com uma db local agora
+
+// conecting to local mongodb with two parameters to avoid warnings and error callback function
+export default  () => {
+    var mongodbURI = "mongodb://127.0.0.1:27017/restaurantdb"
+    mongoose.connect(mongodbURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(()=>{
+        console.log('Connected to succesfully to mongodb')
+    }).catch((err) => {
+        console.log(err)
+    })
+}
+
