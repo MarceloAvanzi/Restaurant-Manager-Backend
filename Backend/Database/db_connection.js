@@ -1,15 +1,10 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 // conecting to local mongodb with two parameters to avoid warnings and error callback function
-export default  () => {
+const mongoConnect = async () => {
     var mongodbURI = "mongodb://127.0.0.1:27017/restaurantdb"
-    mongoose.connect(mongodbURI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }).then(()=>{
-        console.log('Connected to succesfully to mongodb')
-    }).catch((err) => {
-        console.log(err)
-    })
+    await mongoose.connect(mongodbURI);
+    console.log('Connected to succesfully to mongodb')
 }
 
+module.exports = mongoConnect()

@@ -1,11 +1,26 @@
-import express from 'express'; // or const express = require('express') if you remove the "type" from package.json
-import mongodb_connect from './Database/db_connection.js';
-
-// variables declaring
+require('./Database/db_connection.js');
+const express = require('express'); // or import express from 'express' if you put  "type": "module" to package.json
+const Meal = require('./Models/meal.schema.js')
 const app = express();
 
-// Connecting to Databse on mongodb
-mongodb_connect.call()
+
+async function createMeal() {
+    // const order = new Order({ name: "Beans", price: 15.50 })
+    // await order.save()
+    // console.log('Order created', order)
+
+    // or
+
+    const meal = await Meal.create({ 
+        name: "French Fries", 
+        price: 10.50, 
+        portion: "400g"
+    })
+    console.log("Meal created", meal)
+}
+
+// createMeal()
+
 
 app.get('/', (req, res) => { // First the path then the fallback function
     res.send('Hi mates!!')
