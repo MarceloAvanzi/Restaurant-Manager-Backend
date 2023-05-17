@@ -28,4 +28,4 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("users", userSchema); // Need to link the schema to a specifc collection (table)
+module.exports = mongoose.model("users", userSchema); // Need to link the collection (table) to a specifc schema
