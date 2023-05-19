@@ -8,15 +8,10 @@ const port = process.env.PORT || 8000;
 require('./Routes/meal.routes')(app);
 require('./Routes/user.routes.js')(app);
 
-app.get('/', (req, res) => { // First the path then the fallback function
-    res.send('Hi mates!!')
-    console.dir(req.hostname)
-});
-
-app.get('/api/orders/:id', (req, res)  => { // need  to create this for user and meal
-    const id = req.params.id
-    res.send(id)
-})
+// app.get('/', (req, res) => { // First the path then the fallback function
+//     res.send('Hi mates!!')
+//     console.dir(req.hostname)
+// });
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)

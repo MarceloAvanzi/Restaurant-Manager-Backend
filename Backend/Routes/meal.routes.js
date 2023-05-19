@@ -6,6 +6,7 @@ module.exports = (app) => {
     app.use(bodyParser.json());
 
     app.get('/api/getAllMeals', mealController.getAllMeals);
+    app.get('/api/getByName/:name', mealController.getByName);
     app.post('/api/createMeal', mealController.createMeal);
 
 }

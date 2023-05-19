@@ -1,4 +1,4 @@
-const Meal = require('../Models/meal.schema')
+const Meal = require('../Models/meal.schema');
 
 exports.getAllMeals = async (req, res) => {
     res.send(await Meal.find());
@@ -19,4 +19,13 @@ exports.createMeal = async (req, res) => {
 
     console.log("Meal created", meal)
     res.send(meal)
-}
+};
+
+exports.getByName = async (req, res) => {
+    const mealName = req.params.name
+
+    const meal = await Meal.find({name: mealName})
+
+    res.send(meal)
+
+};
