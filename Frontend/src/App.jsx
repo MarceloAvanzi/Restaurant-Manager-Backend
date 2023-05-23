@@ -1,23 +1,34 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './styles.css'
+import NewTodoForm from './NewTodoForm'
+import TodoList from './TodoList'
 
 
 export default function App() {
-  const [newItem, setNewItem] = useState("")
-  const [todos, setTodos] = useState([])
+  // hooks need to be in the beginning of the function always
 
-  function handleSubmit(e){
-    e.preventDefault()
+  // the default value for "todos" is searched on localStorage, if it's empty it returns an empty array
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue == null) return []
 
+    return JSON.parse(localValue)
+  })
 
-    setTodos(currentTodos => {
-      return [
-        ...currentTodos, 
-        {id: crypto.randomUUID(), title: newItem, completed: false},
-      ]
-    })
+  useEffect(() => {
+    // every time our "todos" change it will run this function
+    localStorage.setItem("ITEMS", JSON.stringify(todos))
+  }, [todos])
 
-    setNewItem("")
+  function addTodo(title) {
+    if (title !== "") {
+        setTodos(currentTodos => {
+            return [
+                ...currentTodos, 
+                {id: crypto.randomUUID(), title, completed: false},
+            ]   
+        })
+    }
   }
 
   function toggleTodo (id, completed) {
@@ -32,45 +43,18 @@ export default function App() {
     })
   }
 
-
   function deleteTodo(id) {
     setTodos(currentTodos => {
       return currentTodos.filter(todo => todo.id !== id)
     })
   }
 
-
-
-
-  
-
   return (
     // this is called fragment, it's just an empty tag, because in React a component (App in this case) can only return one element, so this is a way to return more than one (form and h1 in this case)
     <>
-      <form onSubmit={handleSubmit} className="new-item-form" >  
-        <div className="form-row">
-          <label htmlFor="item">New Item</label>
-          <input value={newItem} onChange={e => setNewItem(e.target.value)} type="text" id="item"/>
-        </div>
-        <button className='btn'>Add</button>
-      </form>
+      <NewTodoForm addTodo={addTodo}/>
       <h1 className='header'>Todo List</h1>
-      <ul className='list'>
-        {/* short circuit in React */}
-        {todos.length === 0 && "No Todos"}
-        {todos.map(todo => {
-          return (
-            <li key={todo.id}>
-              <label>
-                <input type='checkbox' checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)}/>
-                {todo.title}
-              </label>
-              <button onClick={() => deleteTodo(todo.id)} className='btn btn-danger'>Delete</button>
-            </li>
-          )
-        })}
-        
-      </ul>
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </>
   )
 }
