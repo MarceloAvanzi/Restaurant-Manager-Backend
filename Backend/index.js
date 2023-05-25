@@ -1,5 +1,6 @@
 require('./Database/db_connection.js');
 require('dotenv/config');
+const cors = require('cors');
 const express = require('express'); // or import express from 'express' if you put  "type": "module" to package.json
 const app = express();
 const port = process.env.PORT || 8000;
@@ -13,6 +14,9 @@ require('./Routes/user.routes.js')(app);
 //     console.dir(req.hostname)
 // });
 
+app.use(cors({
+    origin: '*'
+}))
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)
 })

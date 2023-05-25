@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import './styles.css'
+import '../static/styles.css'
 import NewTodoForm from './NewTodoForm'
 import TodoList from './TodoList'
+import mealsService from '../services/meals.service'
 
 
 export default function App() {
@@ -16,6 +17,12 @@ export default function App() {
   })
 
   useEffect(() => {
+    // calling this backend api to bring all the meals
+    // NOT WORKING, GIVING CORS ERROR
+    mealsService.getAllMeals().then(res => {
+      console.log(res.data)
+    })
+
     // every time our "todos" change it will run this function
     localStorage.setItem("ITEMS", JSON.stringify(todos))
   }, [todos])
