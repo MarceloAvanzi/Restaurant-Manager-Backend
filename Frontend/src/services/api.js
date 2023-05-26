@@ -5,6 +5,6 @@ export default axios.create({
     responseType: 'json',
     headers: {
         Accept: 'application/json',
-        "Content-Type": 'application/json',
+        "Content-Type": 'application/x-www-form-urlencoded',
     },
 });

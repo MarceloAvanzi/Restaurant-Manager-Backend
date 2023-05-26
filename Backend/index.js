@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // Calling routes and passing the app from express as parameter to be used
+require('./Routes/config.routes.js')(app);
 require('./Routes/meal.routes')(app);
 require('./Routes/user.routes.js')(app);
 
@@ -14,9 +15,8 @@ require('./Routes/user.routes.js')(app);
 //     console.dir(req.hostname)
 // });
 
-app.use(cors({
-    origin: '*'
-}))
+
+app.use(cors())
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)
 })
