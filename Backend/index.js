@@ -10,6 +10,7 @@ require('./Routes/config.routes.js')(app);
 require('./Routes/meal.routes')(app);
 require('./Routes/user.routes.js')(app);
 
+// App is running
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`)
 })
