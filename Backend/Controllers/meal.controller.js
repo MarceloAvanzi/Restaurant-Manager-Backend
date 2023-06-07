@@ -1,4 +1,4 @@
-const Meal = require('../Models/meal.schema');
+const Meal = require('../models/meal.schema');
 
 exports.getAllMeals = async (req, res) => {
     res.send(await Meal.find());

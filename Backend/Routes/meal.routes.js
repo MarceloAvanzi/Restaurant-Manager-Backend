@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const mealController = require("../Controllers/meal.controller");
+    const mealController = require("../controllers/meal.controller");
 
     app.get('/api/getAllMeals', mealController.getAllMeals);
     app.get('/api/getByName/:name', mealController.getByName);
