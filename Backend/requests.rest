@@ -1,0 +1,10 @@
+GET http://localhost:8000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNjg2ODcwOTM2fQ.P2mk7Jd1pXeUbXrAjFETR9iM8bhAtgmjNJhuUIM8yR8
+###
+
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "username": "Jim"
+}
