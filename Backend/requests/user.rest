@@ -1,0 +1,10 @@
+POST http://localhost:8000/api/createUser
+Content-Type: application/json
+
+{
+    "name": "Marcelo",
+    "birthday": "1998-12-22",
+    "email": "marcelodaniel@hotmail.com"
+}
+
+###

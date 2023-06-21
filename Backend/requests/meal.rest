@@ -1,0 +1,10 @@
+POST http://localhost:8000/api/createMeal
+Content-Type: application/json
+
+{
+    "name": "Rice",
+    "price": "5.99",
+    "portion": "100g"
+}
+
+###
