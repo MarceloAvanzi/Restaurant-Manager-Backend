@@ -1,9 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./index.html"
+  ],
   theme: {
-    extend: {},
+    screens: {
+      mobile: '280px',
+      lg: '1024px',
+    },
+    extend: {
+      backgroundImage: {
+        'background-meal': "url('./src/public/assets/main-background.jpg')",
+      }
+    },
   },
   plugins: [],
+  jit: true,
 }
 

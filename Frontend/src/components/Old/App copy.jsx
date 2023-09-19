@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import '../static/styles.css'
-import NewTodoForm from './NewTodoForm'
-import TodoList from './TodoList'
-import mealsService from '../services/meals.service'
-import usersService from '../services/users.service'
+import NewTodoForm from '../NewTodoForm'
+import TodoList from '../TodoList'
+import mealsService from '../../services/meals.service'
+import usersService from '../../services/users.service'
 
 
 export default function App() {
