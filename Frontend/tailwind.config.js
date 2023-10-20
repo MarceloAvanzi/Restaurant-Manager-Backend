@@ -11,7 +11,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'background-meal': "url('./src/public/assets/main-background.jpg')",
+        'background-meal': "url('./assets/main-background.jpg')",
       }
     },
   },
