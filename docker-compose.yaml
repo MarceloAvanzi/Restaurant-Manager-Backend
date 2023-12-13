@@ -1,16 +1,30 @@
 version: '3'
 
 services:
-  node:
-    image: node:18-alpine
-    container_name: node
-    working_dir: /usr/src/app
-    networks:
-      - backend
-  mongo:
+  mongodb:
     image: mongo
     container_name: mongodb
     ports:
       - 27017:27017
+    environment:
+      - "MONGO_INITDB_DATABASE: restaurant-manager-db"
+      - "MONGO_INITDB_ROOT_USERNAME:marcelo"
+      - "MONGO_INITDB_ROOT_PASSWORD:marcelo"
+    volumes:
+      - ./data:/data/db
     networks:
-      - backend
+      - mongo-network
+
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nodejs-app
+    ports:
+      - "3000:3000"
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge

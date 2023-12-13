@@ -115,8 +115,9 @@ dist-ssr
 # FuseBox cache
 .fusebox/
 
-# DynamoDB Local files
+# DB Local files
 .dynamodb/
+data/
 
 # TernJS port file
 .tern-port
