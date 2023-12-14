@@ -1,11 +1,11 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /usr/src/app
 
 EXPOSE 3000
 
-COPY . .
+# COPY . .
 
-RUN npm install -g yarn --force && yarn install
+# RUN npm install -g yarn --force && yarn install
 
-CMD [ "yarn", "dev" ]
+# CMD [ "yarn", "dev" ]

@@ -1,30 +1,37 @@
 version: '3'
 
 services:
-  mongodb:
-    image: mongo
-    container_name: mongodb
-    ports:
-      - 27017:27017
-    environment:
-      - "MONGO_INITDB_DATABASE: restaurant-manager-db"
-      - "MONGO_INITDB_ROOT_USERNAME:marcelo"
-      - "MONGO_INITDB_ROOT_PASSWORD:marcelo"
-    volumes:
-      - ./data:/data/db
-    networks:
-      - mongo-network
-
   nodejs:
     build:
       context: .
-      dockerfile: Dockerfile
     container_name: nodejs-app
-    ports:
-      - "3000:3000"
     networks:
-      - mongo-network
+      - node-network
+    volumes:
+      - .:/usr/src/app
+    tty: true
+    environment:
+      - mongodb_URI=mongodb://mongodb:27017/restaurant-manager-db
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    tty: true
+    ports:
+      - 27017:27017
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=root
+    #   - MONGO_INITDB_ROOT_PASSWORD=toor
+    volumes:
+      - ./data:/data/db
+    networks:
+      - node-network
 
 networks:
-  mongo-network:
+  node-network:
     driver: bridge
