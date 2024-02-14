@@ -1,7 +1,7 @@
-module.exports = (app) => {
-    require('dotenv/config');
-    const jwt = require('jsonwebtoken')
+import 'dotenv/config'
+import jwt from 'jsonwebtoken'
 
+export default (app) => {
     const posts = [
         {
             username: 'Kyle',

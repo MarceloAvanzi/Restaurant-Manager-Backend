@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -28,4 +28,4 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("users", userSchema); // Need to link the collection (table) to a specifc schema
+export default mongoose.model("users", userSchema); // Need to link the collection (table) to a specifc schema

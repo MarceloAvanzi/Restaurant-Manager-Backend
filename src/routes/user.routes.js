@@ -1,8 +1,6 @@
-module.exports = (app) => {
-    const userController = require("../controllers/user.controller");
+import UserController from '../controllers/user.controller.js';
 
-    app.get('/api/getAllUsers', userController.getAllUsers);
-    app.post('/api/createUser', userController.createUser);
-
-    
+export default (app) => {
+    app.get('/api/getAllUsers', UserController.getAllUsers);
+    app.post('/api/createUser', UserController.createUser);    
 };

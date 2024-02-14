@@ -1,16 +1,20 @@
-require('./src/database/db_connection.js');
-require('dotenv/config');
+import './src/database/db_connection.js';
+import 'dotenv/config';
+import express from 'express';
+import configRoutes from './src/routes/config.routes.js';
+import mealRoutes from './src/routes/meal.routes.js';
+import userRoutes from './src/routes/user.routes.js';
+import jwtRoutes from './src/routes/jwt.routes.js';
 
-const express = require('express'); // or import express from 'express' if you put  "type": "module" to package.json
 const app = express();
 app.use(express.json())
 const port = process.env.PORT || 3000;
 
-// Calling routes and passing the app from express as parameter to be used
-require('./src/routes/config.routes.js')(app);
-require('./src/routes/meal.routes.js')(app);
-require('./src/routes/user.routes.js')(app);
-require('./src/routes/jwt.routes.js')(app);
+// Calling routes and passing the app from express instance as parameter
+configRoutes(app);
+mealRoutes(app);
+userRoutes(app);
+jwtRoutes(app);
 
 // App is running
 app.listen(port, () => {
