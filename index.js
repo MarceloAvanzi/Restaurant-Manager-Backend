@@ -1,10 +1,10 @@
-import './src/database/db_connection.js';
+import './src/infrastructure/database/db_connection.js';
 import 'dotenv/config';
 import express from 'express';
-import configRoutes from './src/routes/config.routes.js';
-import mealRoutes from './src/routes/meal.routes.js';
-import userRoutes from './src/routes/user.routes.js';
-import jwtRoutes from './src/routes/jwt.routes.js';
+import configRoutes from './src/infrastructure/config/config.routes.js';
+import mealRoutes from './src/usecases/meal/meal.routes.js';
+import userRoutes from './src/usecases/user/user.routes.js';
+import jwtRoutes from './src/usecases/authentication/jwt.routes.js';
 
 const app = express();
 app.use(express.json())

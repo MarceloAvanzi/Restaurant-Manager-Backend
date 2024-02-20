@@ -1,4 +1,4 @@
-import Meal from '../models/meal.schema.js';
+import Meal from './meal.model.js';
 export default class MealController {
 
     static getAllMeals = async (req, res) => {
@@ -18,7 +18,6 @@ export default class MealController {
             portion: body.portion
         })
     
-        console.log("Meal created", meal)
         res.send(meal)
     };
     

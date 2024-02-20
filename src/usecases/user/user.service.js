@@ -1,4 +1,4 @@
-import User from "../models/user.schema.js";
+import User from "./user.model.js";
 
 export default class UserController {
 
@@ -19,7 +19,6 @@ export default class UserController {
             email: body.email
         })
     
-        console.log('User created successfully ', user)
         res.send(user)
     }
 }
