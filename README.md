@@ -6,6 +6,6 @@ Scope:
 **Backend:**  
  - Meals table (name, portion, price)   
  - Users table (name, phone, birthday)  
- - Jwt authentication table (for employees)  
+ - Jwt authentication table (for employees)   
  - Orders table related to each user (order_number, status (open, in kitchen, ready, paid), userObject or just User_id, Meals object with all the things the User ordered, totalPrice, date)  
  - All CRUD functions for Meals, Users and Orders.  
